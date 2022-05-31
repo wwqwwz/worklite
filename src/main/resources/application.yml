@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /worklite
+spring:
+  application:
+    name: worklite
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/worklite?serverTimezone=GMT%2B8
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+# ===== 自定义swagger配置 ===== #
+swagger:
+    enable: true
+    application-name: ${spring.application.name}/私有工作站
+    application-version: 1.0
+    application-description: springfox swagger 3.0
+    try-host: http://localhost:${server.port}/${spring.application.name}
+    access:
+      #设置允许访问的ip地址白名单,以英文逗号分隔
+      iplist: 127.0.0.1
+
+#springfox:
+#  documentation:
+#    swagger-ui:
+#      enabled: true
+#      base-url: /swagger
