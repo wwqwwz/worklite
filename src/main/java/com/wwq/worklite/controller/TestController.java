@@ -20,7 +20,7 @@ public class TestController {
 
 
     @RequestMapping("/test")
-    @ApiOperation(value = "test",notes = "test")
+    @ApiOperation(value = "test",notes = "test", httpMethod = "POST")
     @ResponseBody
     public String test(){
         return "hello word!";

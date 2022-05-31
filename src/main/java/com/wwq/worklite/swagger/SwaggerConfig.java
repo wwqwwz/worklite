@@ -6,9 +6,7 @@ import org.springframework.boot.SpringBootVersion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.*;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -28,9 +26,8 @@ import java.util.*;
  * @date 5/30/22 5:35 PM
  */
 @Configuration
-@EnableWebMvc
-@EnableOpenApi
-public class SwaggerConfig {
+//@EnableWebMvc
+public class SwaggerConfig extends WebMvcConfigurerAdapter {
 
     private  final SwaggerProperties swaggerProperties;
 
@@ -56,7 +53,7 @@ public class SwaggerConfig {
                 // 选择哪些接口作为swagger的doc发布
                 .select()
 //                .apis(RequestHandlerSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("com.worklite.controller.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.wwq.worklite.controller"))
                 .paths(PathSelectors.any())
                 .build()
 
@@ -112,6 +109,7 @@ public class SwaggerConfig {
      * 通用拦截器排除swagger设置，所有拦截器都会自动加swagger相关的资源排除信息
      */
     @SuppressWarnings("unchecked")
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         try {
             Field registrationsField = FieldUtils.getField(InterceptorRegistry.class, "registrations", true);
