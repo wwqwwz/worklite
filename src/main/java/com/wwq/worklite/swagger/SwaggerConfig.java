@@ -1,5 +1,6 @@
 package com.wwq.worklite.swagger;
 
+import com.github.xiaoymin.swaggerbootstrapui.annotations.EnableSwaggerBootstrapUI;
 import io.swagger.models.auth.In;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.springframework.boot.SpringBootVersion;

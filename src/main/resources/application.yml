@@ -14,6 +14,22 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  #======== redis =======
+
+  redis:
+    database: 0
+    host: 47.98.184.195
+    port: 6379
+    password:
+    jedis:
+      pool:
+        enabled: true
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 1000
+    connect-timeout: 5000
 
 # ===== 自定义swagger配置 ===== #
 swagger:
@@ -31,3 +47,5 @@ swagger:
 #    swagger-ui:
 #      enabled: true
 #      base-url: /swagger
+
+
